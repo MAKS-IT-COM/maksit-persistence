@@ -1,0 +1,140 @@
+# Contributing to MaksIT.Persistence
+
+Thank you for your interest in contributing to `MaksIT.Persistence`.
+
+## Getting Started
+
+1. Fork the repository.
+2. Clone your fork locally.
+3. Create a feature branch.
+4. Implement and test your changes.
+5. Submit a pull request to `main`.
+
+## Development Setup
+
+### Prerequisites
+
+- .NET 10 SDK
+- Git
+- PowerShell 7+ (recommended for utility scripts)
+
+### Build
+
+```bash
+cd src
+dotnet build MaksIT.Persistence.slnx
+```
+
+### Test
+
+Prefer the RepoUtils test engine (coverage + README shields.io badges):
+
+```powershell
+pwsh -File .\utils\engines\test\Invoke-TestEngine.ps1
+```
+
+Or double-click `utils\Invoke-TestEngine.bat`.
+
+Tests run under **Microsoft Testing Platform** (`src/global.json` `test.runner`) with **xunit.v3** and **coverlet.MTP**.
+
+Quick local run:
+
+```bash
+cd src
+dotnet test MaksIT.Persistence.slnx
+```
+
+## Commit Message Format
+
+Use:
+
+```text
+(type): description
+```
+
+### Commit Types
+
+| Type | Description |
+|------|-------------|
+| `(feature):` | New feature or enhancement |
+| `(bugfix):` | Bug fix |
+| `(refactor):` | Refactoring without behavior change |
+| `(perf):` | Performance improvement |
+| `(test):` | Tests only |
+| `(docs):` | Documentation |
+| `(build):` | Build / packaging |
+| `(ci):` | CI configuration |
+| `(style):` | Formatting / style |
+| `(chore):` | Maintenance tasks (dependencies, tooling) |
+| `(revert):` | Revert a previous change |
+
+### Guidelines
+
+- Use lowercase in the description.
+- Keep it concise and specific.
+- Do not end with a period.
+
+## Pull Request Checklist
+
+1. Ensure build and tests pass (RepoUtils test engine when possible).
+2. Update `README.md` if behavior or usage changed.
+3. Update `CHANGELOG.md` under the target version.
+4. If coverage changed, refresh README shields.io badges via the test engine.
+5. Keep changes scoped and explain rationale in the PR description.
+
+## Versioning
+
+This project follows [Semantic Versioning](https://semver.org/):
+
+- **MAJOR**: breaking API changes
+- **MINOR**: backward-compatible features
+- **PATCH**: backward-compatible fixes
+
+## Utility Scripts
+
+Automation lives under `utils/` (Community profile from [maksit-repoutils](https://github.com/MAKS-IT-COM/maksit-repoutils), local-copy sync). Product-specific settings are in each engine’s `scriptSettings.json`.
+
+### Run tests and coverage badges
+
+```powershell
+pwsh -File .\utils\engines\test\Invoke-TestEngine.ps1
+```
+
+Or double-click `utils\Invoke-TestEngine.bat`.
+
+Configuration: `utils/engines/test/scriptSettings.json`
+
+### Release package
+
+Builds, tests, packs, and publishes to NuGet and GitHub release flows.
+
+```powershell
+pwsh -File .\utils\engines\release\Invoke-ReleasePackage.ps1
+```
+
+Or double-click `utils\Invoke-ReleasePackage.bat`.
+
+Prerequisites:
+
+- Docker Desktop (for Linux test validation)
+- GitHub CLI (`gh`)
+- Environment variables **`NuGet`** and **`GitHub`** (logical names in `scriptSettings.json`)
+
+Configuration: `utils/engines/release/scriptSettings.json`
+
+Public GitHub releases target `https://github.com/MAKS-IT-COM/maksit-persistence` (see release `scriptSettings.json`).
+
+### Force amend tagged commit
+
+Amends the latest tagged commit and force-pushes updated branch and tag.
+
+```powershell
+pwsh -File .\utils\tools\Force-AmendTaggedCommit\Force-AmendTaggedCommit.ps1
+pwsh -File .\utils\tools\Force-AmendTaggedCommit\Force-AmendTaggedCommit.ps1 -DryRun
+```
+
+Warning: this rewrites git history.
+
+## License
+
+By contributing, you agree that your contributions are licensed under the terms in `LICENSE.md`.
