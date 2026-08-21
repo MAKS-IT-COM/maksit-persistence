@@ -32,19 +32,6 @@ public class ServiceCollectionExtensionsTests {
   }
 
   [Fact]
-  public void RegisterSchemaSync_RegistersService() {
-    var services = new ServiceCollection();
-    services.AddLogging();
-    IReadOnlyDictionary<string, IReadOnlyList<SchemaColumn>> desired = new Dictionary<string, IReadOnlyList<SchemaColumn>> {
-      ["users"] = [new SchemaColumn("id", "uuid")],
-    };
-
-    services.RegisterSchemaSync("Host=localhost;Database=app;Username=u;Password=p", desired, autoSync: false);
-
-    Assert.Contains(services, d => d.ServiceType == typeof(ISchemaSyncService));
-  }
-
-  [Fact]
   public void RegisterPostgresMigrations_RegistersRunner() {
     var services = new ServiceCollection();
     services.AddLogging();

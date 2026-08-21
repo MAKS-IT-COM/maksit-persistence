@@ -71,26 +71,4 @@ public static class ServiceCollectionExtensions {
       .AddLogging(lb => lb.AddFluentMigratorConsole());
     services.AddScoped<IRunMigrationsService, RunMigrationsService>();
   }
-
-  /// <summary>
-  /// Registers add-only schema sync. Desired schema maps stay in the product.
-  /// </summary>
-  public static void RegisterSchemaSync(
-    this IServiceCollection services,
-    string connectionString,
-    IReadOnlyDictionary<string, IReadOnlyList<SchemaColumn>> desiredSchema,
-    bool autoSync
-  ) {
-    if (string.IsNullOrWhiteSpace(connectionString))
-      throw new ArgumentException("connectionString is required.", nameof(connectionString));
-    ArgumentNullException.ThrowIfNull(desiredSchema);
-
-    services.TryAddSingleton<IDatabaseStartupObserver, NoOpDatabaseStartupObserver>();
-    services.AddSingleton<ISchemaSyncOptions>(new SchemaSyncOptions {
-      ConnectionString = connectionString,
-      AutoSync = autoSync,
-      DesiredSchema = desiredSchema,
-    });
-    services.AddScoped<ISchemaSyncService, SchemaSyncService>();
-  }
 }

@@ -5,11 +5,11 @@ using MaksIT.Persistence.Infrastructure;
 namespace MaksIT.Persistence.Extensions;
 
 /// <summary>
-/// Host startup helpers for migrations and schema sync.
+/// Host startup helpers for FluentMigrator.
 /// </summary>
 public static class ServiceProviderExtensions {
   /// <summary>
-  /// Runs <see cref="IRunMigrationsService"/> then <see cref="ISchemaSyncService"/> when registered.
+  /// Runs <see cref="IRunMigrationsService"/> when registered.
   /// Call from Program.cs before <c>RunAsync</c>.
   /// </summary>
   public static async Task EnsureLinq2DbMigratedAsync(
@@ -22,9 +22,5 @@ public static class ServiceProviderExtensions {
     var run = sp.GetService<IRunMigrationsService>();
     if (run is not null)
       await run.RunAsync(cancellationToken).ConfigureAwait(false);
-
-    var schemaSync = sp.GetService<ISchemaSyncService>();
-    if (schemaSync is not null)
-      await schemaSync.SyncSchemaAsync(cancellationToken).ConfigureAwait(false);
   }
 }

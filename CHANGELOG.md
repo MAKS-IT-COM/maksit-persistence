@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-08-21
+
+### Removed
+- **Schema sync (breaking):** `RegisterSchemaSync`, `ISchemaSyncService`, `ISchemaSyncOptions`, `SchemaColumn`, desired-schema maps, `DatabaseStartupPhases.SchemaSync`, and add-only `ALTER TABLE` sync. Schema evolution is FluentMigrator only.
+
 ## [1.0.0] - 2026-08-17
 
 ### Added

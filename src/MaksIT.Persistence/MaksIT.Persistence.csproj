@@ -7,11 +7,11 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
     <PackageId>MaksIT.Persistence</PackageId>
-    <Version>1.0.0</Version>
+    <Version>2.0.0</Version>
     <Authors>Maksym Sadovnychyy</Authors>
     <Company>MAKS-IT</Company>
     <Product>MaksIT.Persistence</Product>
-    <Description>MaksIT.Persistence product-agnostic facades for linq2db PostgreSQL: connection factory, FluentMigrator startup, add-only schema sync, and Result guards.</Description>
+    <Description>MaksIT.Persistence product-agnostic facades for linq2db PostgreSQL: connection factory, FluentMigrator startup, and Result guards.</Description>
     <PackageTags>dotnet;linq2db;postgresql;fluentmigrator;</PackageTags>
     <RepositoryUrl>https://github.com/MAKS-IT-COM/maksit-persistence</RepositoryUrl>
     <License>MIT</License>

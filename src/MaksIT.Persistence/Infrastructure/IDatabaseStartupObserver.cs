@@ -1,7 +1,7 @@
 namespace MaksIT.Persistence.Infrastructure;
 
 /// <summary>
-/// Optional hooks for reporting database startup phase timing (migrations, schema sync).
+/// Optional hooks for reporting database startup phase timing (migrations).
 /// </summary>
 public interface IDatabaseStartupObserver {
   /// <summary>Called when a named startup phase begins.</summary>
@@ -14,7 +14,7 @@ public interface IDatabaseStartupObserver {
   void OnPhaseFailed(string phase, TimeSpan elapsed, Exception exception);
 }
 
-/// <summary>Well-known phase names reported during migrations and schema sync.</summary>
+/// <summary>Well-known phase names reported during migrations.</summary>
 public static class DatabaseStartupPhases {
   /// <summary>Maintenance Postgres (database postgres) accepted connections.</summary>
   public const string PostgresMaintenanceReady = "postgres_maintenance_ready";
@@ -33,9 +33,6 @@ public static class DatabaseStartupPhases {
 
   /// <summary>Product schema verification completed.</summary>
   public const string SchemaVerified = "schema_verified";
-
-  /// <summary>Add-only schema sync completed.</summary>
-  public const string SchemaSync = "schema_sync";
 }
 
 /// <summary>No-op observer used when the host does not register one.</summary>

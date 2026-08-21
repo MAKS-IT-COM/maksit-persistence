@@ -90,6 +90,8 @@ This project follows [Semantic Versioning](https://semver.org/):
 - **MINOR**: backward-compatible features
 - **PATCH**: backward-compatible fixes
 
+Optional SemVer prerelease (`0.1.0-alpha.1`, `0.1.0-beta.1`, `0.1.0-rc.1`) is valid; git tag is `v{version}`. GitHub marks hyphenated versions as prerelease.
+
 ## Utility Scripts
 
 Automation lives under `utils/` (Community profile from [maksit-repoutils](https://github.com/MAKS-IT-COM/maksit-repoutils), local-copy sync). Product-specific settings are in each engine’s `scriptSettings.json`.
