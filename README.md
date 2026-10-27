@@ -1,8 +1,8 @@
 # MaksIT.Persistence
 
-![Line Coverage](https://img.shields.io/badge/Line%20Coverage-36.8%25-yellow)
-![Branch Coverage](https://img.shields.io/badge/Branch%20Coverage-41.4%25-yellowgreen)
-![Method Coverage](https://img.shields.io/badge/Method%20Coverage-48.6%25-yellowgreen)
+![Line Coverage](https://img.shields.io/badge/Line%20Coverage-38.8%25-yellow)
+![Branch Coverage](https://img.shields.io/badge/Branch%20Coverage-41.7%25-yellowgreen)
+![Method Coverage](https://img.shields.io/badge/Method%20Coverage-50%25-yellowgreen)
 
 NuGet facade over [linq2db](https://linq2db.github.io/) + PostgreSQL for ASP.NET Core Engines: connection factory, FluentMigrator startup, and `MaksIT.Results` guards.
 
@@ -29,7 +29,7 @@ Linq2Db queries stay in the product: persist/query services still call `GetTable
 | Scoped `DataConnection` | `RegisterLinq2Db(connectionString, mappingSchema?)` | `ILinq2DbConnectionFactory` |
 | FluentMigrator wait / create-DB / retry MigrateUp | `RegisterPostgresMigrations(connectionString, assembly, options?)` | `IRunMigrationsService` |
 
-Work leases are **not** in this package: use **MaksIT.Dapr** (`RegisterWorkLeases`) for most first-party apps, or **MaksIT.HAMode** for **maksit-nats** only.
+Work leases are **not** in this package: use **MaksIT.Dapr** (`RegisterWorkLeases`) for most first-party apps, or **MaksIT.HAMode** for **maksit-buoy** only.
 
 ## Result conventions
 
@@ -54,7 +54,7 @@ dotnet add package MaksIT.Persistence
 Or in your `.csproj`:
 
 ```xml
-<PackageReference Include="MaksIT.Persistence" Version="2.0.0" />
+<PackageReference Include="MaksIT.Persistence" Version="2.0.1" />
 ```
 
 ## Registering services
